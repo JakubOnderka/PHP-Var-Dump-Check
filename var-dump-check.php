@@ -25,7 +25,7 @@ if (!isset($_SERVER['argv'][1]) || in_array('-h', $_SERVER['argv']) || in_array(
 PHP Var Dump check version 0.1
 ---------------------------
 Usage:
-    var-dump-check [-e ext] [--exclude dir] [files or directories]
+    var-dump-check [-e ext] [--no-colors] [--exclude dir] [files or directories]
 <?php
     showOptions();
     exit;

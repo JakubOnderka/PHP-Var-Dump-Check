@@ -82,7 +82,7 @@ class Checker
     /**
      * @param array $tokens
      * @param int $from
-     * @param bool $secondArgumentMustBeFalse
+     * @param FunctionConditions|null $conditions
      * @return array
      */
     protected function checkFunctionCall(array $tokens, $from, FunctionConditions $conditions = null)
@@ -147,6 +147,10 @@ class Checker
         return token_get_all($content);
     }
 
+    /**
+     * @param array $functionsToCheck
+     * @return array
+     */
     protected function prepareFunctionCheck(array $functionsToCheck)
     {
         $output = array();

@@ -29,6 +29,12 @@ class Settings
     public $excluded = array();
 
     /**
+     * Use colors in console output
+     * @var bool
+     */
+    public $colors = true;
+
+    /**
      * @var array
      */
     public $functionsToCheck = array(self::VAR_DUMP, self::VAR_EXPORT, self::PRINT_R, self::ZEND_DEBUG_DUMP, self::ZEND_DEBUG_DUMP_2);
@@ -55,6 +61,10 @@ class Settings
 
                     case '--exclude':
                         $setting->excluded[] = $arguments->getNext();
+                        break;
+
+                    case '--no-colors':
+                        $setting->colors = false;
                         break;
 
                     default:

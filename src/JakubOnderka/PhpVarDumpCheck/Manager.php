@@ -13,9 +13,10 @@ class Manager
         $files = $this->getFilesFromPaths($settings->paths, $settings->extensions, $settings->excluded);
         $checkedFiles = count($files);
 
-        $output = $output ?: new Output(new Writer\Console);
+        $output = $output ?: ($settings->colors ? new OutputColored(new Writer\Console) : new Output(new Writer\Console));
         $output->setTotalFileCount($checkedFiles);
 
+        /** @var Result[] $results */
         $results = array();
 
         $startTime = microtime(true);
@@ -25,6 +26,7 @@ class Manager
         foreach ($files as $file) {
             try {
                 $fileResult = $this->checkFile($file, $settings);
+                $checkedFiles++;
 
                 if (empty($fileResult)) {
                     $output->ok();
@@ -58,7 +60,7 @@ class Manager
 
             foreach ($results as $result) {
                 $output->writeLine(str_repeat('-', 60));
-                $output->writeLine($result);
+                $output->writeResult($result);
             }
 
             return false;
