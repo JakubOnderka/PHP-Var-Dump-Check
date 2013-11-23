@@ -68,7 +68,7 @@ class Settings
                         break;
 
                     default:
-                        throw new \InvalidArgumentException($argument);
+                        throw new Exception\InvalidArgument($argument);
                 }
             }
         }

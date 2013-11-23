@@ -1,6 +1,10 @@
 <?php
 use JakubOnderka\PhpVarDumpCheck;
 
+const SUCCESS = 0,
+    WITH_ERRORS = 1,
+    FAILED = 255;
+
 if (PHP_VERSION < '5.3.2') {
     die("PHP Var Dump Check require PHP 5.3.2 and newer");
 }
@@ -54,7 +58,19 @@ if (!$autoloadFileFound) {
     );
 }
 
-$settings = PhpVarDumpCheck\Settings::parseArguments($_SERVER['argv']);
+try {
+    $settings = PhpVarDumpCheck\Settings::parseArguments($_SERVER['argv']);
+} catch (PhpVarDumpCheck\Exception\InvalidArgument $e) {
+    echo "Invalid option {$e->getArgument()}" . PHP_EOL . PHP_EOL;
+    showOptions();
+    die(FAILED);
+}
 
-$check = new PhpVarDumpCheck\Manager();
-$check->check($settings);
+try {
+    $check = new PhpVarDumpCheck\Manager();
+    $status = $check->check($settings);
+    die($status ? SUCCESS : WITH_ERRORS);
+} catch (PhpVarDumpCheck\Exception\Exception $e) {
+    echo $e->getMessage();
+    die(FAILED);
+}
