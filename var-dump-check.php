@@ -13,12 +13,15 @@ function showOptions()
 {
 ?>
 Options:
-    -e <ext>    Check only files with selected extensions separated by comma
-                (default: php,php3,php4,php5,phtml)
-    --exclude   Exclude directory. If you want exclude multiple directory, use
-                multiple exclude parameters.
-    --no-colors Disable colors in console output.
-    -h, --help  Print this help.
+    --tracy      Enable support for Tracy (Debugger::dump)
+    --zend       Enable support for Zend (Zend_Debug::dump and \Zend\Debug\Debug::dump)
+    --ladybug    Enable support for Ladybug (ladybug_dump, ladybug_dump_die, ld, ldd)
+    --extensions Check only files with selected extensions separated by comma
+                 (default: php, php3, php4, php5, phtml)
+    --exclude    Exclude directory. If you want exclude multiple directory, use
+                 multiple exclude parameters.
+    --no-colors  Disable colors in console output.
+    -h, --help   Print this help.
 <?php
 }
 
@@ -29,7 +32,7 @@ if (!isset($_SERVER['argv'][1]) || in_array('-h', $_SERVER['argv']) || in_array(
 PHP Var Dump check version 0.1
 ---------------------------
 Usage:
-    var-dump-check [-e ext] [--no-colors] [--exclude dir] [files or directories]
+    var-dump-check [files or directories]
 <?php
     showOptions();
     exit;

@@ -6,15 +6,22 @@ class Settings
     const VAR_DUMP = 'var_dump',
         VAR_EXPORT = 'var_export',
         PRINT_R = 'print_r',
+
         ZEND_DEBUG_DUMP = 'Zend_Debug::dump',
         ZEND_DEBUG_DUMP_2 = '\Zend\Debug\Debug::dump',
-        DEBUGGER_DUMP = 'Debugger::dump'; // Nette
+
+        DEBUGGER_DUMP = 'Debugger::dump', // Nette, Tracy
+
+        LADYBUG_DUMP = 'ladybug_dump',
+        LADYBUG_DUMP_DIE =  'ladybug_dump_die',
+        LADYBUG_DUMP_SHORTCUT = 'ld',
+        LADYBUG_DUMP_DIE_SHORTCUT = 'ldd';
 
     /**
      * If path contains directory, only file with these extensions are checked
      * @var array
      */
-    public $extensions = array('php', 'phtml', 'php3', 'php4', 'php5');
+    public $extensions = array('php', 'php3', 'php4', 'php5', 'phtml');
 
     /**
      * Array of file or directories to check
@@ -37,13 +44,16 @@ class Settings
     /**
      * @var array
      */
-    public $functionsToCheck = array(self::VAR_DUMP, self::VAR_EXPORT, self::PRINT_R, self::ZEND_DEBUG_DUMP, self::ZEND_DEBUG_DUMP_2);
-
+    public $functionsToCheck = array(
+        self::VAR_DUMP,
+        self::VAR_EXPORT,
+        self::PRINT_R,
+    );
 
     /**
      * @param array $arguments
      * @return Settings
-     * @throws \InvalidArgumentException
+     * @throws Exception\InvalidArgument
      */
     public static function parseArguments(array $arguments)
     {
@@ -55,7 +65,7 @@ class Settings
                 $setting->paths[] = $argument;
             } else {
                 switch ($argument) {
-                    case '-e':
+                    case '--extensions':
                         $setting->extensions = array_map('trim', explode(',', $arguments->getNext()));
                         break;
 
@@ -65,6 +75,22 @@ class Settings
 
                     case '--no-colors':
                         $setting->colors = false;
+                        break;
+
+                    case '--tracy':
+                        $setting->functionsToCheck[] = self::DEBUGGER_DUMP;
+                        break;
+
+                    case '--zend':
+                        $setting->functionsToCheck[] = self::ZEND_DEBUG_DUMP;
+                        $setting->functionsToCheck[] = self::ZEND_DEBUG_DUMP_2;
+                        break;
+
+                    case '--ladybug':
+                        $setting->functionsToCheck[] = self::LADYBUG_DUMP;
+                        $setting->functionsToCheck[] = self::LADYBUG_DUMP_DIE;
+                        $setting->functionsToCheck[] = self::LADYBUG_DUMP_SHORTCUT;
+                        $setting->functionsToCheck[] = self::LADYBUG_DUMP_DIE_SHORTCUT;
                         break;
 
                     default:
