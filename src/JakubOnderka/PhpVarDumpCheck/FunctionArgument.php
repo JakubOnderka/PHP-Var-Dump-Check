@@ -55,7 +55,6 @@ class FunctionArgument
 
     /**
      * @param int $from
-     * @param int $to
      * @return bool
      */
     protected function skipVariableAssign($from)
