@@ -54,6 +54,12 @@ class Checker
         return $results;
     }
 
+    /**
+     * @param array $tokens
+     * @param array $functionsToCheck
+     * @param int $key
+     * @return bool
+     */
     protected function checkNextTokens(array $tokens, array $functionsToCheck, $key)
     {
         $next = &$functionsToCheck;
