@@ -33,7 +33,7 @@ Checked 23 files in 0.1 second, dump found in 1 file
 Forgotten dump 'var_dump' found in ./test.php:36
     34|         $functionsToCheck = $this->prepareFunctionCheck($this->settings->functionsToCheck);
     35|
-  > 36| 	      var_dump($functionsToCheck);
+  > 36| 	    var_dump($functionsToCheck);
     37|
     38|         foreach ($tokens as $key => $token) {
 ```
