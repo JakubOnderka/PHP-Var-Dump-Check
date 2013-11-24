@@ -1,6 +1,7 @@
 {
     "name": "jakub-onderka/php-var-dump-check",
     "license": "BSD-2-Clause",
+    "version": "0.1",
     "description": "Find forgotten variables dump in PHP source code.",
     "authors": [
         {
