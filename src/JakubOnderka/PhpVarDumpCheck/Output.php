@@ -93,6 +93,7 @@ class Output
         $lines = explode("\n", $fileContent);
 
         $offset = $lineNumber - $linesBefore - 1;
+        $offset = max($offset, 0);
         $length = $linesAfter + $linesBefore + 1;
         $lines = array_slice($lines, $offset, $length, $preserveKeys = true);
 
