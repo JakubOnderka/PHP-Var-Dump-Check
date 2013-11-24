@@ -71,6 +71,6 @@ try {
     $status = $check->check($settings);
     die($status ? SUCCESS : WITH_ERRORS);
 } catch (PhpVarDumpCheck\Exception\Exception $e) {
-    echo $e->getMessage();
+    echo $e->getMessage() . PHP_EOL;
     die(FAILED);
 }
