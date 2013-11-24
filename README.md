@@ -37,3 +37,28 @@ Forgotten dump 'var_dump' found in ./test.php:36
     37|
     38|         foreach ($tokens as $key => $token) {
 ```
+
+Recommended setting for usage with Symfony framework
+--------------
+
+For run from command line:
+
+```
+$ ./bin/var-dump-check --exclude app --exclude vendor .
+```
+
+or setting for ANT:
+
+```xml
+<condition property="var-dump-check" value="${basedir}/bin/var-dump-check.bat" else="${basedir}/bin/var-dump-check">
+    <os family="windows"/>
+</condition>
+
+<target name="var-dump-check" description="Run PHP VarDump check">
+    <exec executable="${var-dump-check}" failonerror="true">
+        <arg line='--exclude ${basedir}/app/' />
+        <arg line='--exclude ${basedir}/vendor/' />
+        <arg line='${basedir}' />
+    </exec>
+</target>
+```
