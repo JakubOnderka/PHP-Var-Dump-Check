@@ -62,3 +62,7 @@ or setting for ANT:
     </exec>
 </target>
 ```
+
+------
+
+[![Build Status](https://travis-ci.org/JakubOnderka/PHP-Var-Dump-Check.svg?branch=master)](https://travis-ci.org/JakubOnderka/PHP-Var-Dump-Check)
