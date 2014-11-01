@@ -29,7 +29,14 @@ class RecursiveDirectoryFilterIterator extends \RecursiveFilterIterator
      */
     public function accept()
     {
-        return !in_array($this->current()->getPathname(), $this->excluded);
+        $current = $this->current()->getPathname();
+        $current = $this->normalizeDirectorySeparator($current);
+
+        if ('.' . DIRECTORY_SEPARATOR !== $current[0] . $current[1]) {
+            $current = '.' . DIRECTORY_SEPARATOR . $current;
+        }
+
+        return !in_array($current, $this->excluded);
     }
 
     /**
@@ -53,20 +60,31 @@ class RecursiveDirectoryFilterIterator extends \RecursiveFilterIterator
      */
     public function getChildren()
     {
-        return new self($this->iterator->getChildren(), array());
+        return new self($this->iterator->getChildren(), $this->excluded);
     }
 
     /**
-     * @param string $excluded
+     * @param string $file
      * @return string
      */
-    private function getPathname($excluded)
+    private function getPathname($file)
     {
-        if (DIRECTORY_SEPARATOR !== $excluded[0]) {
-            $excluded = $this->iterator->getPath() . DIRECTORY_SEPARATOR . $excluded;
+        $file = $this->normalizeDirectorySeparator($file);
+
+        if ('.' . DIRECTORY_SEPARATOR !== $file[0] . $file[1]) {
+            $file = '.' . DIRECTORY_SEPARATOR . $file;
         }
 
-        $directoryFile = new \SplFileInfo($excluded);
+        $directoryFile = new \SplFileInfo($file);
         return $directoryFile->getPathname();
+    }
+
+    /**
+     * @param string $file
+     * @return string
+     */
+    private function normalizeDirectorySeparator($file)
+    {
+        return str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $file);
     }
 }
