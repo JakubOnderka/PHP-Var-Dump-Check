@@ -18,7 +18,8 @@
         "jakub-onderka/php-console-highlighter": "For colored console output"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.3"
+        "phpunit/phpunit": "~4.3",
+        "jakub-onderka/php-parallel-lint": "0.*"
     },
     "bin": ["var-dump-check"]
 }
