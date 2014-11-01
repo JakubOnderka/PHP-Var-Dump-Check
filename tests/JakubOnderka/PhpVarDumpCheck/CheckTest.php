@@ -9,6 +9,11 @@ class CheckTest extends PHPUnit_Framework_TestCase
     public function __construct()
     {
         $settings = new PhpVarDumpCheck\Settings();
+        $settings->functionsToCheck = array_merge($settings->functionsToCheck, array(
+            PhpVarDumpCheck\Settings::ZEND_DEBUG_DUMP,
+            PhpVarDumpCheck\Settings::ZEND_DEBUG_DUMP_2,
+        ));
+
         $this->uut = new PhpVarDumpCheck\Checker($settings);
     }
 
