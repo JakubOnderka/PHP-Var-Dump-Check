@@ -11,6 +11,7 @@ class Settings
         ZEND_DEBUG_DUMP_2 = '\Zend\Debug\Debug::dump',
 
         DEBUGGER_DUMP = 'Debugger::dump', // Nette, Tracy
+        DEBUGGER_DUMP_SHORTCUT = 'dump', // shortcut for Debugger::dump
 
         LADYBUG_DUMP = 'ladybug_dump',
         LADYBUG_DUMP_DIE =  'ladybug_dump_die',
@@ -79,6 +80,7 @@ class Settings
 
                     case '--tracy':
                         $setting->functionsToCheck[] = self::DEBUGGER_DUMP;
+                        $setting->functionsToCheck[] = self::DEBUGGER_DUMP_SHORTCUT;
                         break;
 
                     case '--zend':
