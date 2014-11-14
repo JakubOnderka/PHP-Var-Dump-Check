@@ -6,6 +6,7 @@ class ZendTest extends PHPUnit_Framework_TestCase
 {
     protected $uut;
 
+
     public function __construct()
     {
         $settings = new PhpVarDumpCheck\Settings();
@@ -17,17 +18,17 @@ class ZendTest extends PHPUnit_Framework_TestCase
         $this->uut = new PhpVarDumpCheck\Checker($settings);
     }
 
+
     public function testCheck_zendDebugDump()
     {
         $content = <<<PHP
 <?php
 Zend_Debug::dump(\$var);
 PHP;
-
         $result = $this->uut->check($content);
-
         $this->assertCount(1, $result);
     }
+
 
     public function testCheck_zendDebugDumpReturn()
     {
@@ -35,11 +36,10 @@ PHP;
 <?php
 Zend_Debug::dump(\$var, null, false);
 PHP;
-
         $result = $this->uut->check($content);
-
         $this->assertCount(1, $result);
     }
+
 
     /**
      * Namespaces
