@@ -14,17 +14,6 @@ class StandardPHPTest extends PHPUnit_Framework_TestCase
     }
 
 
-    public function testCheck_emptyFile_noDump()
-    {
-        $content = <<<PHP
-<?php
-
-PHP;
-        $result = $this->uut->check($content);
-        $this->assertCount(0, $result);
-    }
-
-
     public function testCheck_singleVarDump_dump()
     {
         $content = <<<PHP
