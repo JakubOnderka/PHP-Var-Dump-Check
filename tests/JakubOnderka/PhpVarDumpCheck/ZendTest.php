@@ -48,7 +48,7 @@ PHP;
     {
         $content = <<<PHP
 <?php
-\Zend\Debug\Debug::dump(\$form);
+\\Zend\\Debug\\Debug::dump(\$form);
 PHP;
 
         $result = $this->uut->check($content);
