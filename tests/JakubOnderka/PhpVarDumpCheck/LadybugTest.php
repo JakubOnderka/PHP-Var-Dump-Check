@@ -62,4 +62,18 @@ PHP;
         $result = $this->uut->check($content);
         $this->assertCount(1, $result);
     }
+
+
+    public function testCheck_dumpsWithNamespace()
+    {
+        $content = <<<PHP
+<?php
+\\ladybug_dump('Ahoj');
+\\ladybug_dump_die('Ahoj');
+\\ld('Ahoj');
+\\ldd('Ahoj');
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(4, $result);
+    }
 }

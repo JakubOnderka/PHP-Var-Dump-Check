@@ -89,4 +89,17 @@ PHP;
         $result = $this->uut->check($content);
         $this->assertCount(0, $result);
     }
+
+
+    public function testCheck_dumpsWithNamespace()
+    {
+        $content = <<<PHP
+<?php
+\\print_r('Ahoj');
+\\var_dump('Ahoj');
+\\var_export('Ahoj');
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(3, $result);
+    }
 }
