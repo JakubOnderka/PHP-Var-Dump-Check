@@ -26,4 +26,15 @@ PHP;
         $result = $this->uut->check($content);
         $this->assertCount(1, $result);
     }
+
+
+    public function testCheck_dumpWithNamespace()
+    {
+        $content = <<<PHP
+<?php
+\\Debugger::dump(\$var);
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(1, $result);
+    }
 }
