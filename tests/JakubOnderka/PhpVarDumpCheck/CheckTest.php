@@ -256,14 +256,4 @@ PHP;
         $result = $this->uut->check($content);
         $this->assertCount(1, $result);
     }
-
-
-    public function testCheck_debugRightAfterEchoStart_dump()
-    {
-        $content = <<<PHP
-<?= print_r('ahoj');
-PHP;
-        $result = $this->uut->check($content);
-        $this->assertCount(1, $result);
-    }
 }
