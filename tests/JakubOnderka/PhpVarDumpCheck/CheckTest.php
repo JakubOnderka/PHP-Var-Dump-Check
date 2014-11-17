@@ -202,4 +202,68 @@ PHP;
         $this->assertTrue($result[0]->isSure());
         $this->assertEquals(2, $result[0]->getLineNumber());
     }
+
+
+    public function testCheck_staticMethodInOtherClass_ignore()
+    {
+        $content = <<<PHP
+<?php
+OtherClass::print_r('Ahoj');
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(0, $result);
+    }
+
+
+    public function testCheck_objectMethod_ignore()
+    {
+        $content = <<<PHP
+<?php
+\$object = new stdClass();
+\$object->print_r('Ahoj');
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(0, $result);
+    }
+
+
+    public function testCheck_classMethod_ignore()
+    {
+        $content = <<<PHP
+<?php
+class print_r {
+    public function print_r()
+    {
+        print_r('ahoj');
+    }
+}
+\$object = new print_r();
+\$object->print_r();
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(1, $result);
+        $this->assertEquals('print_r', $result[0]->getType());
+        $this->assertTrue($result[0]->isSure());
+        $this->assertEquals(5, $result[0]->getLineNumber());
+    }
+
+
+    public function testCheck_debugRightAfterStart_dump()
+    {
+        $content = <<<PHP
+<?php print_r('ahoj');
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(1, $result);
+    }
+
+
+    public function testCheck_debugRightAfterEchoStart_dump()
+    {
+        $content = <<<PHP
+<?= print_r('ahoj');
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(1, $result);
+    }
 }

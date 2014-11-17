@@ -23,7 +23,7 @@ class FunctionArgument
             if (is_array($this->tokens[$i])) {
                 list($tokenType, $token) = $this->tokens[$i];
                 $token = strtolower($token);
-                if ($tokenType === T_WHITESPACE || $tokenType === T_COMMENT) {
+                if ($tokenType === T_COMMENT) {
                     continue;
                 } else if ($tokenType === T_STRING && in_array($token, array('true', 'false', 'null'))) {
                     if ($token === 'true') {
@@ -62,7 +62,7 @@ class FunctionArgument
         for ($i = $from; $i < count($this->tokens); $i++) {
             if (is_array($this->tokens[$i])) {
                 list($tokenType) = $this->tokens[$i];
-                if ($tokenType === T_WHITESPACE || $tokenType === T_COMMENT) {
+                if ($tokenType === T_COMMENT) {
                     continue;
                 }
             } else if ($this->tokens[$i] === '=') {

@@ -38,7 +38,10 @@ class Checker
                 is_array($token) &&
                 (($token[0] === T_STRING && isset($functionsToCheck[$token[1]])) || isset($functionsToCheck[$token[0]]))
             ) {
-                if (!$this->checkNextTokens($tokens, $functionsToCheck, $key)) {
+                if (
+                    !$this->checkPrevTokens($tokens, $key) ||
+                    !$this->checkNextTokens($tokens, $functionsToCheck, $key)
+                ) {
                     continue;
                 }
 
@@ -52,6 +55,22 @@ class Checker
         }
 
         return $results;
+    }
+
+    /**
+     * @param array $tokens
+     * @param int $key
+     * @return bool
+     */
+    protected function checkPrevTokens(array $tokens, $key)
+    {
+        $prevToken = $tokens[$key - 1];
+
+        if (is_array($prevToken)) {
+            return $prevToken[0] === T_OPEN_TAG || $prevToken[0] === T_OPEN_TAG_WITH_ECHO || $prevToken[0] === T_NS_SEPARATOR;
+        } else {
+            return $prevToken === '{' || $prevToken === ';' || $prevToken === '}';
+        }
     }
 
     /**
@@ -150,7 +169,12 @@ class Checker
      */
     protected function tokenize($content)
     {
-        return token_get_all($content);
+        $tokens = token_get_all($content);
+        $tokens = array_values(array_filter($tokens, function ($token) {
+            return !is_array($token) || $token[0] !== T_WHITESPACE;
+        }));
+
+        return $tokens;
     }
 
     /**
