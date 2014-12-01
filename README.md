@@ -24,7 +24,7 @@ Usage and example output
 --------------
 
 ```
-$ ./vendor/bin/var-dump-check .
+$ ./vendor/bin/var-dump-check --no-colors --tracy .
 ...................X...
 
 Checked 23 files in 0.1 second, dump found in 1 file
@@ -37,6 +37,17 @@ Forgotten dump 'var_dump' found in ./test.php:36
     37|
     38|         foreach ($tokens as $key => $token) {
 ```
+
+Options for run
+---------------
+
+- none - check dump: `var_dump`, `var_export`, `print_r`
+- `--ladybug` - check dump: `ladybug_dump`, `ladybug_dump_die`, `ld`, `ldd`
+- `--tracy` - check dump: `dump`, `Debugger::dump`
+- `--zend` - check dump: `Zend_Debug::dump`, `\Zend\Debug\Debug::dump`
+- `--no-colors` - disable colors from output
+- `--exclude folder/` - exclude *folder/* from check
+- `--extensions php,phpt,php7` - map file extensions for check
 
 Recommended setting for usage with Symfony framework
 --------------
