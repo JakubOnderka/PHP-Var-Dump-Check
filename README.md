@@ -77,3 +77,5 @@ or setting for ANT:
 ------
 
 [![Build Status](https://travis-ci.org/JakubOnderka/PHP-Var-Dump-Check.svg?branch=master)](https://travis-ci.org/JakubOnderka/PHP-Var-Dump-Check)
+[![Downloads this Month](https://img.shields.io/packagist/dm/jakub-onderka/php-var-dump-check.svg)](https://packagist.org/packages/jakub-onderka/php-var-dump-check)
+[![Latest stable](https://img.shields.io/packagist/v/jakub-onderka/php-var-dump-check.svg)](https://packagist.org/packages/jakub-onderka/php-var-dump-check)
