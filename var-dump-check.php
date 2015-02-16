@@ -5,8 +5,8 @@ const SUCCESS = 0,
     WITH_ERRORS = 1,
     FAILED = 255;
 
-if (PHP_VERSION < '5.3.2') {
-    die("PHP Var Dump Check require PHP 5.3.2 and newer");
+if (PHP_VERSION < '5.3.3') {
+    die("PHP Var Dump Check require PHP 5.3.3 and newer");
 }
 
 function showOptions()
