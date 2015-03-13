@@ -2,7 +2,7 @@ PHP VarDump Check
 =================
 
 PHP console application for find forgotten variable dump. Support PHP build in method
-print_r, var_dump and var_export method and also method from Tracy debugger, Ladybug
+`print_r`, `var_dump` and `var_export` method and also method from Tracy debugger, Ladybug
 and Zend Framework.
 
 Install
@@ -13,7 +13,7 @@ Just create a `composer.json` file and run the `php composer.phar install` comma
 ```json
 {
     "require-dev": {
-        "jakub-onderka/php-var-dump-check": "0.*"
+        "jakub-onderka/php-var-dump-check": "~0.2"
     }
 }
 ```

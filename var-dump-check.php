@@ -29,7 +29,7 @@ Options:
  * Help
  */
 if (!isset($_SERVER['argv'][1]) || in_array('-h', $_SERVER['argv']) || in_array('--help', $_SERVER['argv'])) { ?>
-PHP Var Dump check version 0.1
+PHP Var Dump check version 0.2
 ---------------------------
 Usage:
     var-dump-check [files or directories]
