@@ -45,6 +45,7 @@ Options for run
 - `--ladybug` - check dump: `ladybug_dump`, `ladybug_dump_die`, `ld`, `ldd`
 - `--tracy` - check dump: `dump`, `Debugger::dump`
 - `--zend` - check dump: `Zend_Debug::dump`, `\Zend\Debug\Debug::dump`
+- `--symfony` - check dump: `dump`, `VarDumper::dump`, `VarDumper::setHandler`
 - `--no-colors` - disable colors from output
 - `--exclude folder/` - exclude *folder/* from check
 - `--extensions php,phpt,php7` - map file extensions for check
@@ -55,7 +56,7 @@ Recommended setting for usage with Symfony framework
 For run from command line:
 
 ```
-$ ./bin/var-dump-check --exclude app --exclude vendor .
+$ ./bin/var-dump-check --symfony --exclude app --exclude vendor .
 ```
 
 or setting for ANT:

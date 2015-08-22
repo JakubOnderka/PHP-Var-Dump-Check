@@ -68,9 +68,13 @@ PHP;
         $content = <<<PHP
 <?php
 \\dump(\$var);
-\\VarDumper::dump(\$var);
+\\Symfony\\Component\\VarDumper\\VarDumper::dump(\$var);
+\\Symfony\\Component\\VarDumper\\VarDumper::setHandler(\$var);
+\\Symfony\\Component\\VarDumper\\VarDumper::setHandler(function(){
+
+});
 PHP;
         $result = $this->uut->check($content);
-        $this->assertCount(2, $result);
+        $this->assertCount(4, $result);
     }
 }
