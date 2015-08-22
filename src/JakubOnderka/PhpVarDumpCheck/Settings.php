@@ -16,7 +16,11 @@ class Settings
         LADYBUG_DUMP = 'ladybug_dump',
         LADYBUG_DUMP_DIE =  'ladybug_dump_die',
         LADYBUG_DUMP_SHORTCUT = 'ld',
-        LADYBUG_DUMP_DIE_SHORTCUT = 'ldd';
+        LADYBUG_DUMP_DIE_SHORTCUT = 'ldd',
+
+        SYMFONY_VARDUMPER_HANDLER = 'VarDumper::setHandler',
+        SYMFONY_VARDUMPER_DUMP = 'VarDumper::dump',
+        SYMFONY_VARDUMPER_DUMP_SHORTCUT = 'dump';
 
     /**
      * If path contains directory, only file with these extensions are checked
@@ -95,12 +99,18 @@ class Settings
                         $setting->functionsToCheck[] = self::LADYBUG_DUMP_DIE_SHORTCUT;
                         break;
 
+                    case '--symfony':
+                        $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_DUMP;
+                        $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_DUMP_SHORTCUT;
+                        $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_HANDLER;
+                        break;
+
                     default:
                         throw new Exception\InvalidArgument($argument);
                 }
             }
         }
-
+        $setting->functionsToCheck = array_unique($setting->functionsToCheck);
         return $setting;
     }
 
