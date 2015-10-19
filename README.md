@@ -2,8 +2,8 @@ PHP VarDump Check
 =================
 
 PHP console application for find forgotten variable dump. Support PHP build in method
-`print_r`, `var_dump` and `var_export` method and also method from Tracy debugger, Ladybug
-and Zend Framework.
+`print_r`, `var_dump` and `var_export` method and also method from Tracy debugger, Ladybug,
+Symfony and Zend Framework.
 
 Install
 -------
@@ -56,7 +56,7 @@ Recommended setting for usage with Symfony framework
 For run from command line:
 
 ```
-$ ./bin/var-dump-check --symfony --exclude app --exclude vendor .
+$ ./vendor/bin/var-dump-check --symfony --exclude app --exclude vendor .
 ```
 
 or setting for ANT:
