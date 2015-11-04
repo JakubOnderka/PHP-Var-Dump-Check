@@ -3,7 +3,7 @@ PHP VarDump Check
 
 PHP console application for find forgotten variable dump. Support PHP build in method
 `print_r`, `var_dump` and `var_export` method and also method from Tracy debugger, Ladybug,
-Symfony and Zend Framework.
+Symfony, Laravel and Zend Framework.
 
 Install
 -------
@@ -46,6 +46,7 @@ Options for run
 - `--tracy` - check dump: `dump`, `Debugger::dump`
 - `--zend` - check dump: `Zend_Debug::dump`, `\Zend\Debug\Debug::dump`
 - `--symfony` - check dump: `dump`, `VarDumper::dump`, `VarDumper::setHandler`
+- `--laravel` - check dump: `dd`
 - `--no-colors` - disable colors from output
 - `--exclude folder/` - exclude *folder/* from check
 - `--extensions php,phpt,php7` - map file extensions for check
