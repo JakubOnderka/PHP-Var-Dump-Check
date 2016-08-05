@@ -22,7 +22,10 @@ class Settings
         SYMFONY_VARDUMPER_DUMP = 'VarDumper::dump',
         SYMFONY_VARDUMPER_DUMP_SHORTCUT = 'dump',
 
-        LARAVEL_DUMP_DD = 'dd';
+        LARAVEL_DUMP_DD = 'dd',
+
+        DOCTRINE_DUMP = 'Doctrine::dump',
+        DOCTRINE_DUMP_2 = '\Doctrine\Common\Util\Debug::dump';
 
     /**
      * If path contains directory, only file with these extensions are checked
@@ -111,6 +114,11 @@ class Settings
                         $setting->functionsToCheck[] = self::LARAVEL_DUMP_DD;
                         break;
 
+                    case '--doctrine':
+                        $setting->functionsToCheck[] = self::DOCTRINE_DUMP;
+                        $setting->functionsToCheck[] = self::DOCTRINE_DUMP_2;
+                        break;
+
                     default:
                         throw new Exception\InvalidArgument($argument);
                 }
@@ -132,6 +140,7 @@ class Settings
             self::VAR_EXPORT => new FunctionConditions(2, false, false),
             self::ZEND_DEBUG_DUMP => new FunctionConditions(3, true, true),
             self::DEBUGGER_DUMP => new FunctionConditions(2, false, false),
+            self::DOCTRINE_DUMP => new FunctionConditions(2, false, false),
         );
 
 

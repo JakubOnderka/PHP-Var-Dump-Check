@@ -45,6 +45,7 @@ Options for run
 - `--ladybug` - check dump: `ladybug_dump`, `ladybug_dump_die`, `ld`, `ldd`
 - `--tracy` - check dump: `dump`, `Debugger::dump`
 - `--zend` - check dump: `Zend_Debug::dump`, `\Zend\Debug\Debug::dump`
+- `--doctrine` - check dump: `Doctrine::dump`, `\Doctrine\Common\Util\Debug::dump`
 - `--symfony` - check dump: `dump`, `VarDumper::dump`, `VarDumper::setHandler`
 - `--laravel` - check dump: `dd`
 - `--no-colors` - disable colors from output
