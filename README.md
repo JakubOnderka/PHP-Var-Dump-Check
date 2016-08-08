@@ -3,7 +3,7 @@ PHP VarDump Check
 
 PHP console application for find forgotten variable dump. Support PHP build in method
 `print_r`, `var_dump` and `var_export` method and also method from Tracy debugger, Ladybug,
-Symfony, Laravel and Zend Framework.
+Symfony, Laravel, Doctrine and Zend Framework.
 
 Install
 -------
