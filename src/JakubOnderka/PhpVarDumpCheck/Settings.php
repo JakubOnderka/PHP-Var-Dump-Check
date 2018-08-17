@@ -12,7 +12,7 @@ class Settings
 
         DEBUGGER_DUMP = 'Debugger::dump', // Nette, Tracy
         DEBUGGER_DUMP_SHORTCUT = 'dump', // shortcut for Debugger::dump
-		DEBUGGER_BARDUMP = 'Debugger::barDump', // Nette, Tracy
+        DEBUGGER_BARDUMP = 'Debugger::barDump', // Nette, Tracy
         DEBUGGER_BARDUMP_SHORTCUT = 'bdump', // shortcut for Debugger::dump
 
         LADYBUG_DUMP = 'ladybug_dump',
@@ -92,7 +92,7 @@ class Settings
                     case '--tracy':
                         $setting->functionsToCheck[] = self::DEBUGGER_DUMP;
                         $setting->functionsToCheck[] = self::DEBUGGER_DUMP_SHORTCUT;
-						$setting->functionsToCheck[] = self::DEBUGGER_BARDUMP;
+                        $setting->functionsToCheck[] = self::DEBUGGER_BARDUMP;
                         $setting->functionsToCheck[] = self::DEBUGGER_BARDUMP_SHORTCUT;
                         break;
 

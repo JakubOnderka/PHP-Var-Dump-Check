@@ -43,7 +43,7 @@ Options for run
 
 - none - check dump: `var_dump`, `var_export`, `print_r`
 - `--ladybug` - check dump: `ladybug_dump`, `ladybug_dump_die`, `ld`, `ldd`
-- `--tracy` - check dump: `dump`, `Debugger::dump`
+- `--tracy` - check dump: `dump`, `bdump`, `Debugger::dump`, `Debugger::barDump`
 - `--zend` - check dump: `Zend_Debug::dump`, `\Zend\Debug\Debug::dump`
 - `--doctrine` - check dump: `Doctrine::dump`, `\Doctrine\Common\Util\Debug::dump`
 - `--symfony` - check dump: `dump`, `VarDumper::dump`, `VarDumper::setHandler`
