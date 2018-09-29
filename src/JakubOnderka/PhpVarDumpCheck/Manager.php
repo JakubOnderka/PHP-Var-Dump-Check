@@ -7,6 +7,7 @@ class Manager
      * @param Settings $settings
      * @param Output|null $output
      * @return bool
+     * @throws Exception\NotExistsPath
      */
     public function check(Settings $settings, Output $output = null)
     {
@@ -74,6 +75,8 @@ class Manager
      * @param string $filename
      * @param Settings $settings
      * @return Result[]
+     * @throws Exception\FileNotFound
+     * @throws Exception\FileOpen
      */
     public function checkFile($filename, Settings $settings = null)
     {
