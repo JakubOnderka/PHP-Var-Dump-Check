@@ -1,6 +1,8 @@
 <?php
 use JakubOnderka\PhpVarDumpCheck;
 
+const VERSION = '0.2';
+
 const SUCCESS = 0,
     WITH_ERRORS = 1,
     FAILED = 255;
@@ -23,15 +25,14 @@ Options:
     --exclude     Exclude directory. If you want exclude multiple directory, use
                   multiple exclude parameters.
     --no-colors   Disable colors in console output.
+    -V, --version Show version.
     -h, --help    Print this help.
 <?php
 }
 
-/**
- * Help
- */
+// Help
 if (!isset($_SERVER['argv'][1]) || in_array('-h', $_SERVER['argv']) || in_array('--help', $_SERVER['argv'])) { ?>
-PHP Var Dump check version 0.2
+PHP Var Dump check version <?= VERSION ?>
 ---------------------------
 Usage:
     var-dump-check [files or directories]
@@ -40,6 +41,11 @@ Usage:
     exit;
 }
 
+// Version
+if (in_array('-V', $_SERVER['argv']) || in_array('--version', $_SERVER['argv'])) {
+    echo VERSION . PHP_EOL;
+    exit;
+}
 
 $files = array(
     __DIR__ . '/../../autoload.php',
