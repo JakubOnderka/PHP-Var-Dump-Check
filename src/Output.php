@@ -68,7 +68,6 @@ class Output
     /**
      * @param Result $result
      * @param bool $withCodeSnippet
-     * @return string
      */
     public function writeResult(Result $result, $withCodeSnippet = true)
     {
