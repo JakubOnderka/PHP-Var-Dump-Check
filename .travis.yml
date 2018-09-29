@@ -16,8 +16,6 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - if [ "$TRAVIS_PHP_VERSION" == "5.3.3" ]; then composer config disable-tls true; fi
-  - if [ "$TRAVIS_PHP_VERSION" == "5.3.3" ]; then composer config secure-http false; fi
   - composer install --no-interaction --prefer-source
 
 script:
