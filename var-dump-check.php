@@ -5,14 +5,14 @@ const VERSION = '0.2';
 
 const SUCCESS = 0,
     WITH_ERRORS = 1,
-    FAILED = 255;
+    FAILED = 254; // 255 code is reserved to PHP itself
 
 if (PHP_VERSION < '5.4.0') {
-    die("PHP Var Dump Check require PHP 5.4.0 and newer");
+    fwrite(STDERR,"PHP Var Dump Check require PHP 5.4.0 and newer");
+    die(FAILED);
 }
 
-function showOptions()
-{
+function showOptions() {
 ?>
 Options:
     --tracy       Enable support for Tracy (Debugger::dump)
@@ -62,17 +62,19 @@ foreach ($files as $file) {
 }
 
 if (!$autoloadFileFound) {
-    die(
+    fwrite(STDERR,
       'You need to set up the project dependencies using the following commands:' . PHP_EOL .
       'curl -s http://getcomposer.org/installer | php' . PHP_EOL .
       'php composer.phar install' . PHP_EOL
     );
+    die(FAILED);
 }
 
 try {
     $settings = PhpVarDumpCheck\Settings::parseArguments($_SERVER['argv']);
 } catch (PhpVarDumpCheck\Exception\InvalidArgument $e) {
-    echo "Invalid option {$e->getArgument()}" . PHP_EOL . PHP_EOL;
+    fwrite(STDERR, "Invalid option {$e->getArgument()}" . PHP_EOL);
+    echo PHP_EOL;
     showOptions();
     die(FAILED);
 }
@@ -82,6 +84,6 @@ try {
     $status = $check->check($settings);
     die($status ? SUCCESS : WITH_ERRORS);
 } catch (PhpVarDumpCheck\Exception\Exception $e) {
-    echo $e->getMessage() . PHP_EOL;
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
     die(FAILED);
 }
