@@ -9,7 +9,7 @@
         }
     ],
     "autoload": {
-        "psr-0": {"JakubOnderka\\PhpVarDumpCheck": "src/"}
+        "psr-4": {"JakubOnderka\\PhpVarDumpCheck\\": "src/"}
     },
     "require": {
         "php": ">=5.4.0"
