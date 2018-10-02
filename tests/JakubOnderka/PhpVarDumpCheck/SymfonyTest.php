@@ -14,6 +14,8 @@ class SymfonyTest extends PHPUnit_Framework_TestCase
             PhpVarDumpCheck\Settings::SYMFONY_VARDUMPER_HANDLER,
             PhpVarDumpCheck\Settings::SYMFONY_VARDUMPER_DUMP,
             PhpVarDumpCheck\Settings::SYMFONY_VARDUMPER_DUMP_SHORTCUT,
+            PhpVarDumpCheck\Settings::SYMFONY_VARDUMPER_DD,
+            PhpVarDumpCheck\Settings::SYMFONY_VARDUMPER_DD_SHORTCUT,
         ));
         $this->uut = new PhpVarDumpCheck\Checker($settings);
     }
@@ -28,6 +30,17 @@ PHP;
         $result = $this->uut->check($content);
         $this->assertCount(1, $result);
     }
+
+    public function testCheck_symfonyDD()
+    {
+        $content = <<<PHP
+<?php
+VarDumper::dd(\$var);
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(1, $result);
+    }
+
 
     public function testCheck_symfonyDebugSetHandler()
     {
@@ -63,18 +76,31 @@ PHP;
     }
 
 
+    public function testCheck_symfonyDDShortcut()
+    {
+        $content = <<<PHP
+<?php
+dd(\$var);
+PHP;
+        $result = $this->uut->check($content);
+        $this->assertCount(1, $result);
+    }
+
+
     public function testCheck_symfonyDumpsWithNamespace()
     {
         $content = <<<PHP
 <?php
 \\dump(\$var);
 \\Symfony\\Component\\VarDumper\\VarDumper::dump(\$var);
+\\dd(\$var);
+\\Symfony\\Component\\VarDumper\\VarDumper::dd(\$var);
 \\Symfony\\Component\\VarDumper\\VarDumper::setHandler(\$var);
 \\Symfony\\Component\\VarDumper\\VarDumper::setHandler(function(){
 
 });
 PHP;
         $result = $this->uut->check($content);
-        $this->assertCount(4, $result);
+        $this->assertCount(6, $result);
     }
 }
