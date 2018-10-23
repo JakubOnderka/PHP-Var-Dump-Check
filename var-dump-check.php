@@ -18,7 +18,7 @@ Options:
     --tracy       Enable support for Tracy (Debugger::dump)
     --zend        Enable support for Zend (Zend_Debug::dump and \Zend\Debug\Debug::dump)
     --ladybug     Enable support for Ladybug (ladybug_dump, ladybug_dump_die, ld, ldd)
-    --symfony     Enable support for Symfony2 (dump, VarDumper::dump, VarDumper::setHandler)
+    --symfony     Enable support for Symfony2 (dump, VarDumper::dump, VarDumper::setHandler, Vardumper::dd())
     --doctrine    Enable support for Doctrine (Doctrine::dump, \Doctrine\Common\Util\Debug::dump)
     --laravel     Enable support for Laravel (dd, dump)
     --extensions  Check only files with selected extensions separated by comma
