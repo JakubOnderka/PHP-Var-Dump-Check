@@ -20,6 +20,7 @@ Options:
     --ladybug     Enable support for Ladybug (ladybug_dump, ladybug_dump_die, ld, ldd)
     --symfony     Enable support for Symfony2 (dump, VarDumper::dump, VarDumper::setHandler)
     --doctrine    Enable support for Doctrine (Doctrine::dump, \Doctrine\Common\Util\Debug::dump)
+    --laravel     Enable support for Laravel (dd, dump)
     --extensions  Check only files with selected extensions separated by comma
                   (default: php, php3, php4, php5, phtml)
     --exclude     Exclude directory. If you want exclude multiple directory, use
