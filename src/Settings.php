@@ -25,6 +25,7 @@ class Settings
         SYMFONY_VARDUMPER_DUMP_SHORTCUT = 'dump',
 
         LARAVEL_DUMP_DD = 'dd',
+        LARAVEL_DUMP = 'dump',
 
         DOCTRINE_DUMP = 'Doctrine::dump',
         DOCTRINE_DUMP_2 = '\Doctrine\Common\Util\Debug::dump';
@@ -116,6 +117,7 @@ class Settings
 
                     case '--laravel':
                         $setting->functionsToCheck[] = self::LARAVEL_DUMP_DD;
+                        $setting->functionsToCheck[] = self::LARAVEL_DUMP;
                         break;
 
                     case '--doctrine':
