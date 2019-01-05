@@ -23,6 +23,8 @@ class Settings
         SYMFONY_VARDUMPER_HANDLER = 'VarDumper::setHandler',
         SYMFONY_VARDUMPER_DUMP = 'VarDumper::dump',
         SYMFONY_VARDUMPER_DUMP_SHORTCUT = 'dump',
+        SYMFONY_VARDUMPER_DD = 'VarDumper::dd',
+        SYMFONY_VARDUMPER_DD_SHORTCUT = 'dd',
 
         LARAVEL_DUMP_DD = 'dd',
         LARAVEL_DUMP = 'dump',
@@ -112,6 +114,8 @@ class Settings
                     case '--symfony':
                         $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_DUMP;
                         $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_DUMP_SHORTCUT;
+                        $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_DD;
+                        $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_DD_SHORTCUT;
                         $setting->functionsToCheck[] = self::SYMFONY_VARDUMPER_HANDLER;
                         break;
 

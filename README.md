@@ -46,7 +46,7 @@ Options for run
 - `--tracy` - check dump: `dump`, `bdump`, `Debugger::dump`, `Debugger::barDump`
 - `--zend` - check dump: `Zend_Debug::dump`, `\Zend\Debug\Debug::dump`
 - `--doctrine` - check dump: `Doctrine::dump`, `\Doctrine\Common\Util\Debug::dump`
-- `--symfony` - check dump: `dump`, `VarDumper::dump`, `VarDumper::setHandler`
+- `--symfony` - check dump: `dump`, `VarDumper::dump`, `VarDumper::setHandler`, `VarDumper::dd`
 - `--laravel` - check dump: `dd`, `dump`
 - `--no-colors` - disable colors from output
 - `--exclude folder/` - exclude *folder/* from check
