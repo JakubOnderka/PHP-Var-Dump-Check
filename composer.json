@@ -21,5 +21,6 @@
         "phpunit/phpunit": "~4.5",
         "jakub-onderka/php-parallel-lint": "~1.0"
     },
-    "bin": ["var-dump-check"]
+    "bin": ["var-dump-check"],
+    "abandoned": "php-parallel-lint/php-var-dump-check"
 }

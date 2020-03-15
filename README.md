@@ -1,6 +1,12 @@
 PHP VarDump Check
 =================
 
+**This repository is abandoned.**
+
+Suggested alternative: https://github.com/php-parallel-lint/PHP-Var-Dump-Check
+
+-------
+
 PHP console application for find forgotten variable dump. Support PHP build in method
 `print_r`, `var_dump` and `var_export` method and also method from Tracy debugger, Ladybug,
 Symfony, Laravel, Doctrine and Zend Framework.
